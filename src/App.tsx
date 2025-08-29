@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { IconDelete, IconFile, IconSave, IconView } from "./icons/Icons";
+import { marked } from "marked";
 
 function App() {
   const [text, setText] = useState("");
@@ -77,7 +78,10 @@ function App() {
               <IconView />
             </span>
           </header>
-          <div className="preview__content">{text}</div>
+          <div
+            className="preview__content"
+            dangerouslySetInnerHTML={{ __html: marked.parse(text) }}
+          ></div>
         </section>
       </main>
     </div>

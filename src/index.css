@@ -29,6 +29,12 @@ a {
   color: inherit;
 }
 
+
+li{
+  list-style: none;
+}
+
+
 .container {
   height: 100vh;
   display: flex;
@@ -140,7 +146,7 @@ a {
   min-height: calc(100%);
   width: 0;
   border: none;
-  border-left: 2px dashed #5e5d5d;
+  border-left: 2px solid #5e5d5d;
 }
 
 .markdown__header,
