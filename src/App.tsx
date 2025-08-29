@@ -1,14 +1,19 @@
 import { useState } from "react";
-import { IconDelete, IconFile, IconSave } from "./icons/Icons";
+import { IconDelete, IconFile, IconSave, IconView } from "./icons/Icons";
 
 function App() {
   const [text, setText] = useState("");
+  const [view, setView] = useState(false);
 
   function handleChangeMarkdown(event: React.ChangeEvent<HTMLTextAreaElement>) {
     const markdownText = event.target.value;
     console.log("Markdown text changed:", markdownText);
     // Here you can add logic to process the markdown text
     setText(markdownText);
+  }
+
+  function handleClickIconView() {
+    setView(!view);
   }
 
   return (
@@ -42,7 +47,14 @@ function App() {
       </header>
 
       <main className="main">
-        <section className="markdown">
+        <section
+          className="markdown"
+          style={{
+            flex: view ? 0 : 1,
+            minWidth: view ? "0px" : "50%",
+            opacity: view ? 0 : 1,
+          }}
+        >
           <header className="markdown__header">
             <h2 className="markdown__title">Markdown</h2>
           </header>
@@ -55,9 +67,15 @@ function App() {
           ></textarea>
         </section>
         <hr className="main__line-center" />
-        <section className="preview">
+        <section
+          className="preview"
+          style={{ flex: view ? 1 : 1, width: view ? "100%" : "50%" }}
+        >
           <header className="preview__header">
             <h2 className="preview__title">Preview</h2>
+            <span className="preview__icon" onClick={handleClickIconView}>
+              <IconView />
+            </span>
           </header>
           <div className="preview__content">{text}</div>
         </section>
