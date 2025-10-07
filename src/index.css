@@ -201,6 +201,7 @@ li{
 .preview__content {
   white-space: pre-wrap;
   overflow-wrap: break-word;
+  overflow-y: auto;
 }
 
 .markdown__content {
